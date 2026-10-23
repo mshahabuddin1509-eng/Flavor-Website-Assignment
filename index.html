@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tavola</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 83%;
+            height: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #263044;
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-style: italic;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: #ed2228;
+            font-size: 25px;
+            font-style: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #344054;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 0 12px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e52227;
+        }
+
+        .reserve-btn {
+            background-color: #e52227;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 13px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .reserve-btn:hover {
+            background-color: #bd171c;
+            transform: scale(1.05);
+        }
+
+        .hero-section {
+            width: 100%;
+            height: 600px;
+            background-image: url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-section span,
+        .hero-section h1,
+        .hero-section p,
+        .hero-section .hero-buttons {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section span {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section h1 {
+            font-family: Georgia, serif;
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            line-height: 28px;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-buttons button {
+            padding: 15px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #btn-1 {
+            background-color: #e52227;
+            color: white;
+            border: 1px solid #e52227;
+        }
+
+        #btn-1:hover {
+            background-color: #bd171c;
+            border-color: #bd171c;
+        }
+
+        #btn-2 {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgb(109, 106, 106);
+        }
+
+        #btn-2:hover {
+            border: 1px solid white;
+        }
+
+        .about-section {
+            width: 100%;
+            padding: 96px 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 64px;
+        }
+
+        .about-image {
+            width: 48%;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 529px;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .about-content {
+            width: 52%;
+        }
+
+        .subtitle {
+            color: #ed2228;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .about-content h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 48px;
+            line-height: 1;
+            color: #111827;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            color: #475569;
+            font-size: 18px;
+            line-height: 28px;
+            margin-bottom: 18px;
+        }
+
+        .about-content .second-para {
+            font-size: 16px;
+            line-height: 26px;
+            margin-bottom: 38px;
+        }
+
+        .stats {
+            width: 100%;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 46px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .stat {
+            width: 33.33%;
+        }
+
+        .stat h2 {
+            color: #ed2228;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 30px;
+            font-weight: normal;
+            margin-bottom: 4px;
+        }
+
+        .stat span {
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .menu-section {
+            width: 100%;
+            padding: 0 0 8px;
+        }
+
+        .menu-heading {
+            text-align: center;
+            padding-top: 4px;
+        }
+
+        .menu-subtitle {
+            color: #e52529;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .menu-heading h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 48px;
+            font-weight: bold;
+            color: #0c1b32;
+            margin-bottom: 12px;
+        }
+
+        .menu-description {
+            color: #46566b;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        .menu-container {
+            width: 79%;
+            margin: 64px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 30px;
+        }
+
+        .menu-card {
+            width: 25%;
+            min-width: 0;
+            background-color: white;
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 345px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-image img:hover {
+            transform: scale(1.3);
+        }
+
+        .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .chef-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: #e52529;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 13px;
+            border-radius: 20px;
+        }
+
+        .menu-content {
+            padding: 25px 24px;
+            min-height: 160px;
+        }
+
+        .menu-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 9px;
+        }
+
+        .menu-title h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 19px;
+            font-weight: normal;
+            color: #101b2e;
+            line-height: 24px;
+        }
+
+        .menu-price {
+            color: #ef2929;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .menu-content p {
+            color: #46566b;
+            font-size: 14px;
+            line-height: 21px;
+        }
+
+        .food-tag {
+            display: inline-block;
+            background-color: #f1f2f4;
+            color: #46566b;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        .menu-bottom {
+            text-align: center;
+            margin-top: 49px;
+        }
+
+        .menu-bottom a {
+            color: #ef2929;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu-bottom a span {
+            margin-left: 8px;
+        }
+
+        .reviews-section {
+            width: 100%;
+            background-color: white;
+            padding: 80px 0 77px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .reviews-heading {
+            text-align: center;
+            margin-bottom: 58px;
+        }
+
+        .reviews-heading p {
+            color: #ef2929;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .reviews-heading h1 {
+            color: #0c1b32;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .reviews-container {
+            width: 82%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 32px;
+        }
+
+        .review-card {
+            width: 33.33%;
+            min-width: 0;
+            min-height: 252px;
+            background-color: #f8f9fa;
+            border-radius: 17px;
+            padding: 30px 32px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .review-stars {
+            color: #ffb000;
+            font-size: 19px;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .review-quote {
+            position: absolute;
+            top: 13px;
+            right: 22px;
+            color: #ffdddd;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 95px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .review-text {
+            color: #26364b;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+
+        .review-user {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 50%;
+            background-color: #ffdddd;
+            color: #c91d22;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+        }
+
+        .user-details h3 {
+            color: #111827;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 5px;
+        }
+
+        .user-details p {
+            color: #718096;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .reservation-section {
+            width: 100%;
+            min-height: 750px;
+            background-image: linear-gradient(rgba(13, 22, 38, 0.94),
+                    rgba(13, 22, 38, 0.94)), url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0px;
+            box-sizing: border-box;
+        }
+
+        .reservation-container {
+            width: 80%;
+            max-width: 1460px;
+            margin: 0px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .reservation-content {
+            width: 50%;
+            color: white;
+        }
+
+        .reservation-subtitle {
+            display: block;
+            color: #ff525b;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .reservation-content h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 50px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .reservation-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e0e5ed;
+            margin-bottom: 32px;
+        }
+
+        .reservation-contact p {
+            font-size: 14px;
+            color: #b9c2d0;
+            margin-bottom: 10px;
+        }
+
+        .reservation-phone {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .phone-icon {
+            width: 22px;
+            height: 22px;
+            color: #ff525b;
+        }
+
+        .reservation-phone a {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .reservation-form-box {
+            width: 50%;
+            background-color: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-sizing: border-box;
+        }
+
+        .reservation-form {
+            width: 100%;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: #172033;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            height: 50px;
+            padding: 0px 16px;
+            border: 1px solid #cbd2dc;
+            border-radius: 8px;
+            background-color: white;
+            color: #172033;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #758094;
+            opacity: 1;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e52328;
+        }
+
+        .special-requests {
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .form-group textarea {
+            height: 98px;
+            padding: 15px 16px;
+            resize: vertical;
+        }
+
+        .reservation-button {
+            width: 100%;
+            height: 57px;
+            background-color: #e52328;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 7px 14px rgba(229, 35, 40, 0.20);
+            transition: background-color 0.3s ease;
+        }
+
+        .reservation-button:hover {
+            background-color: #c71920;
+        }
+
+        .reservation-note {
+            color: #758094;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 25px;
+            margin-bottom: 0px;
+        }
+
+        .restaurant-footer {
+            width: 100%;
+            background-color: #111827;
+            color: #9caec5;
+            padding: 65px 0 22px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .footer-container {
+            width: 82%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            padding-bottom: 64px;
+        }
+
+        .footer-column {
+            box-sizing: border-box;
+        }
+
+        .footer-info {
+            width: 28%;
+        }
+
+        .footer-links {
+            width: 14%;
+        }
+
+        .footer-hours {
+            width: 25%;
+        }
+
+        .footer-newsletter {
+            width: 25%;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 27px;
+            font-style: italic;
+            font-weight: normal;
+            margin-bottom: 32px;
+        }
+
+        .logo-line {
+            color: #ef4444;
+            font-size: 23px;
+        }
+
+        .logo-icon {
+            width: 18px;
+            height: 30px;
+            border-left: 2px solid #ef4444;
+            margin: 0 4px;
+        }
+
+        .footer-description {
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .contact-icon {
+            width: 18px;
+            min-width: 18px;
+            color: #ef4444;
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 24px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #202a39;
+            color: #aeb8c6;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: white;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #9caec5;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .hours-row span:last-child {
+            color: white;
+            text-align: right;
+        }
+
+        .hours-row .closed {
+            color: #ef4444;
+        }
+
+        .footer-newsletter p {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            width: 65%;
+            min-width: 0;
+            height: 46px;
+            padding: 0 15px;
+            box-sizing: border-box;
+            background-color: #202a39;
+            color: white;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #718096;
+        }
+
+        .newsletter-form button {
+            height: 46px;
+            padding: 0 21px;
+            background-color: #e52529;
+            color: white;
+            border: 1px solid #e52529;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #c91d22;
+            border-color: #c91d22;
+        }
+
+        .footer-bottom {
+            width: 82%;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid #252d3a;
+        }
+
+        .footer-bottom p {
+            color: #7185a3;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">♜</span> La Tavola
+            </a>
+
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Menu</a>
+                <a href="#">About</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <button class="reserve-btn">Reserve a Table</button>
+
+        </div>
+    </nav>
+
+    <div class="hero-section">
+
+        <span>Welcome to La Tavola</span>
+
+        <h1>Authentic Italian Cuisine</h1>
+
+        <p>
+            Experience the finest Italian traditions, crafted with love and served
+            <br>
+            with passion since 1985.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button id="btn-1">Reserve a Table</button>
+
+            <button id="btn-2">View Our Menu</button>
+
+        </div>
+
+    </div>
+
+    <section class="about-section">
+
+        <div class="container">
+
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop"
+                    alt="La Tavola Restaurant">
+            </div>
+
+            <div class="about-content">
+
+                <div class="subtitle">OUR STORY</div>
+
+                <h1>A Family Tradition of Excellence</h1>
+
+                <p>
+                    For nearly four decades, La Tavola has been bringing the
+                    authentic flavors of Italy to our community. Every dish
+                    tells a story of tradition, passion, and the finest
+                    ingredients sourced from local farms and Italian importers.
+                </p>
+
+                <p class="second-para">
+                    Founded by the Rossi family in 1985, our restaurant
+                    continues to honor the recipes passed down through
+                    generations while embracing modern culinary techniques.
+                </p>
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <h2>40+</h2>
+                        <span>Years of Excellence</span>
+                    </div>
+
+                    <div class="stat">
+                        <h2>50K+</h2>
+                        <span>Happy Guests</span>
+                    </div>
+
+                    <div class="stat">
+                        <h2>4.9</h2>
+                        <span>Star Rating</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="menu-section">
+
+        <div class="menu-heading">
+            <p class="menu-subtitle">OUR MENU</p>
+            <h1>Chef's Selections</h1>
+            <p class="menu-description">
+                Discover our most beloved dishes, crafted with the finest ingredients and time-honored
+                <br>
+                recipes.
+            </p>
+        </div>
+
+        <div class="menu-container">
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&h=400&fit=crop"
+                        alt="Burrata">
+                    <span class="chef-badge">Chef's Pick</span>
+                </div>
+
+                <div class="menu-content">
+                    <div class="menu-title">
+                        <h2>Burrata</h2>
+                        <span class="menu-price">$18</span>
+                    </div>
+
+                    <p>
+                        Creamy burrata with prosciutto di Parma, arugula, and aged balsamic
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&h=400&fit=crop"
+                        alt="Spaghetti alla Carbonara">
+                    <span class="chef-badge">Chef's Pick</span>
+                </div>
+
+                <div class="menu-content">
+                    <div class="menu-title">
+                        <h2>Spaghetti alla Carbonara</h2>
+                        <span class="menu-price">$24</span>
+                    </div>
+
+                    <p>
+                        Classic Roman pasta with guanciale, egg yolk, Pecorino Romano, and black pepper
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=400&fit=crop"
+                        alt="Branzino al Forno">
+                    <span class="chef-badge">Chef's Pick</span>
+                </div>
+
+                <div class="menu-content">
+                    <div class="menu-title">
+                        <h2>Branzino al Forno</h2>
+                        <span class="menu-price">$38</span>
+                    </div>
+
+                    <p>
+                        Whole roasted Mediterranean sea bass with herbs, lemon, and olive oil
+                    </p>
+
+                    <span class="food-tag">gluten-free</span>
+                </div>
+
+            </div>
+
+            <div class="menu-card">
+
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&h=400&fit=crop"
+                        alt="Tiramisu">
+                    <span class="chef-badge">Chef's Pick</span>
+                </div>
+
+                <div class="menu-content">
+                    <div class="menu-title">
+                        <h2>Tiramisu</h2>
+                        <span class="menu-price">$12</span>
+                    </div>
+
+                    <p>
+                        Classic layered dessert with espresso-soaked ladyfingers and mascarpone cream
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="menu-bottom">
+            <a href="#">View Full Menu <span>→</span></a>
+        </div>
+
+    </section>
+
+
+    <section class="reviews-section">
+
+        <div class="reviews-heading">
+            <p>WHAT OUR GUESTS SAY</p>
+            <h1>Reviews &amp; Testimonials</h1>
+        </div>
+
+        <div class="reviews-container">
+
+            <div class="review-card">
+
+                <div class="review-stars">
+                    ★ ★ ★ ★ ★
+                </div>
+
+                <div class="review-quote">“</div>
+
+                <p class="review-text">
+                    "The best Italian food I've had outside of Italy.
+                    The carbonara is absolutely authentic and the service
+                    is impeccable."
+                </p>
+
+                <div class="review-user">
+
+                    <div class="user-avatar">S</div>
+
+                    <div class="user-details">
+                        <h3>Sarah M.</h3>
+                        <p>Yelp • January 2025</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="review-card">
+
+                <div class="review-stars">
+                    ★ ★ ★ ★ ★
+                </div>
+
+                <div class="review-quote">“</div>
+
+                <p class="review-text">
+                    "We celebrated our anniversary here and it was
+                    perfect. The ambiance, the food, the wine selection -
+                    everything exceeded our expectations."
+                </p>
+
+                <div class="review-user">
+
+                    <div class="user-avatar">M</div>
+
+                    <div class="user-details">
+                        <h3>Michael R.</h3>
+                        <p>Google • December 2024</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="review-card">
+
+                <div class="review-stars">
+                    ★ ★ ★ ★ ★
+                </div>
+
+                <div class="review-quote">“</div>
+
+                <p class="review-text">
+                    "La Tavola has become our go-to spot for special
+                    occasions. The burrata appetizer is a must-try,
+                    and the tiramisu is heavenly."
+                </p>
+
+                <div class="review-user">
+
+                    <div class="user-avatar">J</div>
+
+                    <div class="user-details">
+                        <h3>Jennifer L.</h3>
+                        <p>TripAdvisor • November 2024</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="reservation-section">
+
+        <div class="reservation-container">
+
+            <div class="reservation-content">
+
+                <span class="reservation-subtitle">BOOK A TABLE</span>
+
+                <h1>Make a Reservation</h1>
+
+                <p class="reservation-description">
+                    Join us for an unforgettable dining experience.
+                    Reserve your table today and let us take care of
+                    the rest.
+                </p>
+
+                <div class="reservation-contact">
+
+                    <p>Or call us directly</p>
+
+                    <div class="reservation-phone">
+                        <div class="phone-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <a href="tel:5551234567">(555) 123-4567</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="reservation-form-box">
+
+                <form class="reservation-form">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="reservation-name">Name</label>
+                            <input type="text" id="reservation-name" placeholder="Your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-email">Email</label>
+                            <input type="email" id="reservation-email" placeholder="your@email.com" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="reservation-date">Date</label>
+                            <input type="date" id="reservation-date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-time">Time</label>
+
+                            <select id="reservation-time" required>
+                                <option value="" selected disabled>
+                                    Select time
+                                </option>
+                                <option>12:00 PM</option>
+                                <option>01:00 PM</option>
+                                <option>02:00 PM</option>
+                                <option>06:00 PM</option>
+                                <option>07:00 PM</option>
+                                <option>08:00 PM</option>
+                                <option>09:00 PM</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="reservation-guests">
+                                Number of Guests
+                            </label>
+
+                            <select id="reservation-guests" required>
+                                <option value="" selected disabled>
+                                    Select guests
+                                </option>
+                                <option>1 Guest</option>
+                                <option>2 Guests</option>
+                                <option>3 Guests</option>
+                                <option>4 Guests</option>
+                                <option>5 Guests</option>
+                                <option>6 Guests</option>
+                                <option>7+ Guests</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-phone">Phone</label>
+                            <input type="tel" id="reservation-phone" placeholder="(555) 123-4567" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group special-requests">
+                        <label for="reservation-message">
+                            Special Requests
+                        </label>
+
+                        <textarea id="reservation-message"
+                            placeholder="Dietary restrictions, celebrations, seating preferences..."></textarea>
+                    </div>
+
+
+                    <button type="submit" class="reservation-button">
+                        Request Reservation
+                    </button>
+
+                    <p class="reservation-note">
+                        We'll confirm your reservation via email within 2 hours.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="restaurant-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-column footer-info">
+
+                <h2 class="footer-logo">
+                    <span class="logo-line">—</span>
+                    <span class="logo-icon"><i></i></span>
+                    <span>La Tavola</span>
+                    <span class="logo-line">—</span>
+                </h2>
+
+                <p class="footer-description">Authentic Italian Cuisine</p>
+
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <p>(555) 123-4567</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <p>reservations@latavola.com</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <p>123 Main Street<br>San Francisco, CA 94102</p>
+                    </div>
+                </div>
+
+                <div class="footer-socials">
+                    <a href="#" class="social-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" class="social-icon">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon">
+                        <i class="fa-brands fa-yelp"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="footer-column footer-links">
+
+                <h3>QUICK LINKS</h3>
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-column footer-hours">
+
+                <h3>HOURS</h3>
+
+                <div class="hours-row">
+                    <span>Monday</span>
+                    <span class="closed">Closed</span>
+                </div>
+
+                <div class="hours-row">
+                    <span>Tuesday</span>
+                    <span>5:00 PM - 10:00 PM</span>
+                </div>
+
+                <div class="hours-row">
+                    <span>Wednesday</span>
+                    <span>5:00 PM - 10:00 PM</span>
+                </div>
+
+                <div class="hours-row">
+                    <span>Thursday</span>
+                    <span>5:00 PM - 10:00 PM</span>
+                </div>
+
+                <div class="hours-row">
+                    <span>Friday</span>
+                    <span>5:00 PM - 11:00 PM</span>
+                </div>
+
+                <div class="hours-row">
+                    <span>Saturday</span>
+                    <span>12:00 PM - 11:00 PM</span>
+                </div>
+
+                <div class="hours-row">
+                    <span>Sunday</span>
+                    <span>12:00 PM - 9:00 PM</span>
+                </div>
+
+            </div>
+
+            <div class="footer-column footer-newsletter">
+
+                <h3>NEWSLETTER</h3>
+
+                <p>Subscribe for special offers and seasonal menu updates.</p>
+
+                <form class="newsletter-form">
+
+                    <input type="email" placeholder="Your email" required>
+
+                    <button type="submit">Subscribe</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 La Tavola. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
